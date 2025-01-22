@@ -39,6 +39,12 @@ export default function Home() {
       setMessage("");
     }
   };
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter") {
+      handleSend();
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto pt-10 pb-10 relative h-screen flex flex-col font-sans w-full px-10">
       {/* intro */}
@@ -76,6 +82,7 @@ export default function Home() {
           placeholder="Write a message..."
           value={message}
           onChange={(e) => handleChange(e.target.value)}
+          onKeyDown={handleKeyDown}
           submitButton={
             <Button onClick={handleSend}>
               Send <Send />
