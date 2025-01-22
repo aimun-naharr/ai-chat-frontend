@@ -33,7 +33,7 @@ export default function Home() {
     ]);
   };
   const handleSend = () => {
-    if (message.length > 0) {
+    if (message.trim()) {
       setConversations((prev) => [...prev, { message, isCustomer: true }]);
       handleAiResponse(message);
       setMessage("");

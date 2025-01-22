@@ -1,9 +1,10 @@
 "use server";
-import axios from "axios";
+
+import { baseAxios } from "@/services";
 
 export const getAiResponse = async (msg: string) => {
-  const url = "https://ai-chat-backend-jh3r.onrender.com/api/chat";
-  const response = await axios.post(url, { message: msg });
+  const url = "/api/chat";
+  const response = await baseAxios.post(url, { message: msg });
   console.log("server response", response);
-  return response.data;
+  return response?.data;
 };
