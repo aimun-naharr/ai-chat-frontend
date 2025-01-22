@@ -12,7 +12,7 @@ npm install
 Run the local server:
 
 ```
-npm run dev;
+npm run dev
 
 ```
 
@@ -28,8 +28,6 @@ Open [http://localhost:3000](http://localhost:3000)
   - Conversational message display for customer and AI messages.
   - Integration with OpenAI API or a mock backend for AI responses.
 
----
-
 ## 3. Implementing Message Input
 
 - Rendered a `textarea` component from shadcn:
@@ -37,14 +35,10 @@ Open [http://localhost:3000](http://localhost:3000)
   - A "Send" button to trigger message submission.
   - Handled input change and submit msg with server actions.
 
----
-
 ## 4. Implementing Chat Display
 
 - ChatDisplay with different styling:
   - Display messages with different styles for customer and AI responses.
-
----
 
 ## 5. AI Response Simulation
 
