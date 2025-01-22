@@ -27,22 +27,20 @@ export default function Home() {
   };
   const handleAiResponse = async (message: string) => {
     const response = await getAiResponse(message);
-    // setConversations([
-    //   ...conversations,
-    //   { message: response.response, isCustomer: false },
-    // ]);
     setConversations((prev) => [
       ...prev,
       { message: response.response, isCustomer: false },
     ]);
   };
   const handleSend = () => {
-    setConversations((prev) => [...prev, { message, isCustomer: true }]);
-    handleAiResponse(message);
-    setMessage("");
+    if (message.length > 0) {
+      setConversations((prev) => [...prev, { message, isCustomer: true }]);
+      handleAiResponse(message);
+      setMessage("");
+    }
   };
   return (
-    <div className="max-w-4xl mx-auto pt-10 pb-10 relative h-screen flex flex-col">
+    <div className="max-w-4xl mx-auto pt-10 pb-10 relative h-screen flex flex-col font-sans w-full px-10">
       {/* intro */}
       <div className="flex flex-col gap-0.5 mb-8">
         <h2 className="font-bold text-4xl tracking-tighter">
@@ -53,23 +51,26 @@ export default function Home() {
           got!
         </h3>
       </div>
+      {/* chat display */}
       <div
         ref={chatContainerRef}
         className="h-full flex-auto px-2  overflow-y-auto flex flex-col gap-8 "
       >
         {conversations.map((conversation, index) => (
-          <div
-            key={index}
-            className={cn("flex  max-w-[350px] rounded py-2 px-4", {
-              "ml-auto bg-indigo-600 text-indigo-50": conversation.isCustomer,
-              " bg-indigo-50/50 text-indigo-700 w-max":
-                !conversation.isCustomer,
-            })}
-          >
-            <p className="">{conversation.message}</p>
+          <div key={index}>
+            <div
+              className={cn("flex  max-w-[350px] w-full rounded py-3 px-5", {
+                "ml-auto bg-indigo-600 text-indigo-50 w-max":
+                  conversation.isCustomer,
+                " bg-gray-50 text-black w-max": !conversation.isCustomer,
+              })}
+            >
+              <p className="leading-relaxed">{conversation.message}</p>
+            </div>
           </div>
         ))}
       </div>
+      {/* message input */}
       <div className="mt-10">
         <Textarea
           placeholder="Write a message..."

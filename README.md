@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a chat interface that simulates conversation between customer and AI assistant.
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+npm install
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run the local server:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm run dev;
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000)
 
-To learn more about Next.js, take a look at the following resources:
+# Implementation Process for Chat Feature
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 1. Requirements Gathering
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Identify the key functionalities required:
+  - Message input field for customers.
+  - "Send" button to submit messages.
+  - Conversational message display for customer and AI messages.
+  - Integration with OpenAI API or a mock backend for AI responses.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 3. Implementing Message Input
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Rendered a `textarea` component from shadcn:
+  - Text input for users to type messages.
+  - A "Send" button to trigger message submission.
+  - Handled input change and submit msg with server actions.
+
+---
+
+## 4. Implementing Chat Display
+
+- ChatDisplay with different styling:
+  - Display messages with different styles for customer and AI responses.
+
+---
+
+## 5. AI Response Simulation
+
+- Create `action/index.ts` to integrate mock responses using server actions.
